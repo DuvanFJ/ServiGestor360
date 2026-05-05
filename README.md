@@ -1,18 +1,37 @@
-## Getting Started
+# ServiGestor360
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+Sistema desarrollado en Java con conexión a MySQL para la gestión de solicitudes de espacios físicos.
 
-## Folder Structure
+## Funcionalidades
 
-The workspace contains two folders by default, where:
+* Registro de clientes
+* Listado de clientes
+* Actualización de clientes
+* Eliminación de clientes
+* Registro de solicitudes
+* Validación automática de solicitudes (Aprobado/Rechazado)
+* Validación de disponibilidad de salas
+* Consulta de solicitudes por cliente
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+## Tecnologías utilizadas
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+* Java
+* JDBC
+* MySQL
+* MySQL Workbench
+* VS Code
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+## Base de datos
 
-## Dependency Management
+El archivo `servigestor360.sql` contiene la estructura completa de la base de datos.
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+## Cómo ejecutar
+
+1. Importar el archivo `.sql` en MySQL
+2. Configurar la conexión en `ConexionBD.java`
+3. Ejecutar la clase `Main.java`
+
+## Autor
+
+Duvan Fonseca
+Ficha: 3186707
