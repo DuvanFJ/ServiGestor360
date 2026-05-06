@@ -16,9 +16,9 @@ public class ConexionBD {
 
         try {
             conexion = DriverManager.getConnection(URL, USUARIO, CLAVE);
-            System.out.println("✅ Conexión exitosa a la base de datos");
+            System.out.println("Conexión exitosa a la base de datos");
         } catch (SQLException e) {
-            System.out.println("❌ Error de conexión: " + e.getMessage());
+            System.out.println("Error de conexión: " + e.getMessage());
         }
 
         return conexion;
