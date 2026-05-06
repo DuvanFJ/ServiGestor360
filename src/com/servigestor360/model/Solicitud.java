@@ -21,7 +21,7 @@ public class Solicitud {
     }
 
     // =========================
-    // CONSTRUCTOR SIN ID (INSERTAR)
+    // CONSTRUCTOR SIN ID
     // =========================
     public Solicitud(int idCliente, String fechaCreacion, String horaSolicitud,
                      String descripcionProblema, String direccionServicio,
@@ -41,7 +41,7 @@ public class Solicitud {
     }
 
     // =========================
-    // CONSTRUCTOR CON ID (ACTUALIZAR)
+    // CONSTRUCTOR CON ID
     // =========================
     public Solicitud(int idSolicitud, int idCliente, String fechaCreacion, String horaSolicitud,
                      String descripcionProblema, String direccionServicio,
@@ -62,7 +62,7 @@ public class Solicitud {
     }
 
     // =========================
-    // NORMALIZAR DATOS (MEJORA)
+    // NORMALIZAR DATOS
     // =========================
     public void normalizarDatos() {
         if (motivo != null) {
