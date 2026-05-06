@@ -14,7 +14,7 @@ public class Main {
 
         Scanner sc = new Scanner(System.in);
 
-        // 🔥 PRUEBA DE CONEXIÓN (NO SE ELIMINA)
+        // PRUEBA DE CONEXIÓN
         System.out.println("=== PROBANDO CONEXIÓN ===");
         ConexionBD.obtenerConexion();
 
