@@ -1,10 +1,10 @@
 package com.servigestor360;
 
 import com.servigestor360.config.ConexionBD;
-import com.servigestor360.dao.ClienteDao;
-import com.servigestor360.dao.SolicitudDao;
-import com.servigestor360.model.Cliente;
-import com.servigestor360.model.Solicitud;
+import com.servigestor360.dao.UsuarioDao;
+import com.servigestor360.dao.SolicitudReservaDao;
+import com.servigestor360.model.Usuario;
+import com.servigestor360.model.SolicitudReserva;
 
 import java.util.Scanner;
 
@@ -14,37 +14,36 @@ public class Main {
 
         Scanner sc = new Scanner(System.in);
 
-        // PRUEBA DE CONEXIÓN
         System.out.println("=== PROBANDO CONEXIÓN ===");
         ConexionBD.obtenerConexion();
 
-        ClienteDao clienteDao = new ClienteDao();
-        SolicitudDao solicitudDao = new SolicitudDao();
+        UsuarioDao usuarioDao = new UsuarioDao();
+        SolicitudReservaDao reservaDao = new SolicitudReservaDao();
 
         int opcion;
 
         do {
-            System.out.println("\n====== SERVIGESTOR 360 ======");
-            System.out.println("1. Registrar cliente");
-            System.out.println("2. Listar clientes");
-            System.out.println("3. Registrar solicitud");
-            System.out.println("4. Ver solicitudes");
-            System.out.println("5. Ver solicitudes por cliente"); // NUEVO
-            System.out.println("6. Eliminar cliente"); // SE MANTIENE
-            System.out.println("7. Salir");
-            System.out.print("Seleccione una opción: ");
 
+            System.out.println("\n====== SISTEMA DE RESERVAS ======");
+            System.out.println("1. Registrar usuario");
+            System.out.println("2. Listar usuarios");
+            System.out.println("3. Registrar reserva");
+            System.out.println("4. Ver reservas");
+            System.out.println("5. Eliminar usuario");
+            System.out.println("6. Salir");
+
+            System.out.print("Seleccione una opción: ");
             opcion = sc.nextInt();
             sc.nextLine();
 
             switch (opcion) {
 
                 // =========================
-                // REGISTRAR CLIENTE
+                // REGISTRAR USUARIO
                 // =========================
                 case 1:
 
-                    System.out.println("\n--- REGISTRAR CLIENTE ---");
+                    System.out.println("\n--- REGISTRAR USUARIO ---");
 
                     System.out.print("Nombres: ");
                     String nombres = sc.nextLine();
@@ -53,116 +52,105 @@ public class Main {
                     String apellidos = sc.nextLine();
 
                     System.out.print("Tipo Documento: ");
-                    String tipoDoc = sc.nextLine();
+                    String tipoDocumento = sc.nextLine();
 
                     System.out.print("Número Documento: ");
-                    String numDoc = sc.nextLine();
+                    String numeroDocumento = sc.nextLine();
 
                     System.out.print("Teléfono: ");
                     String telefono = sc.nextLine();
 
-                    System.out.print("Correo: ");
+                    System.out.print("Correo Electrónico: ");
                     String correo = sc.nextLine();
 
-                    System.out.print("Dirección: ");
-                    String direccion = sc.nextLine();
+                    System.out.print("Rol (Estudiante/Docente): ");
+                    String rol = sc.nextLine();
 
-                    Cliente cliente = new Cliente(
-                            nombres, apellidos, tipoDoc, numDoc,
-                            telefono, correo, direccion, true
+                    Usuario usuario = new Usuario(
+                            nombres,
+                            apellidos,
+                            tipoDocumento,
+                            numeroDocumento,
+                            telefono,
+                            correo,
+                            rol,
+                            true
                     );
 
-                    clienteDao.insertarCliente(cliente);
+                    usuarioDao.insertarUsuario(usuario);
                     break;
 
                 // =========================
-                // LISTAR CLIENTES
+                // LISTAR USUARIOS
                 // =========================
                 case 2:
-                    System.out.println("\n--- LISTA DE CLIENTES ---");
-                    clienteDao.listarClientes();
+
+                    System.out.println("\n--- LISTA DE USUARIOS ---");
+                    usuarioDao.listarUsuarios();
                     break;
 
                 // =========================
-                // REGISTRAR SOLICITUD
+                // REGISTRAR RESERVA
                 // =========================
                 case 3:
 
-                    System.out.println("\n--- REGISTRAR SOLICITUD ---");
+                    System.out.println("\n--- REGISTRAR RESERVA ---");
 
-                    System.out.print("ID Cliente: ");
-                    int idCliente = sc.nextInt();
+                    System.out.print("ID Usuario: ");
+                    int idUsuario = sc.nextInt();
                     sc.nextLine();
 
-                    System.out.print("Fecha (YYYY-MM-DD): ");
+                    System.out.print("Fecha Reserva (YYYY-MM-DD): ");
                     String fecha = sc.nextLine();
 
-                    System.out.print("Hora (HH:MM): ");
+                    System.out.print("Hora Reserva (HH:MM): ");
                     String hora = sc.nextLine();
 
                     System.out.print("Motivo: ");
                     String motivo = sc.nextLine();
 
-                    System.out.print("Sala: ");
-                    String sala = sc.nextLine();
+                    System.out.print("Espacio: ");
+                    String espacio = sc.nextLine();
 
-                    Solicitud solicitud = new Solicitud(
-                            idCliente,
+                    SolicitudReserva reserva = new SolicitudReserva(
+                            idUsuario,
                             fecha,
                             hora,
-                            "Solicitud de espacio",
-                            "Universidad",
-                            "Normal",
                             motivo,
-                            "Sin observaciones",
-                            sala,
+                            espacio,
                             "Pendiente"
                     );
 
-                    // VALIDACIÓN EXTRA
-                    solicitud.normalizarDatos();
-
-                    solicitudDao.insertarSolicitud(solicitud);
+                    reservaDao.insertarReserva(reserva);
                     break;
 
                 // =========================
-                // LISTAR SOLICITUDES
+                // LISTAR RESERVAS
                 // =========================
                 case 4:
-                    System.out.println("\n--- LISTA DE SOLICITUDES ---");
-                    solicitudDao.listarSolicitudes();
+
+                    System.out.println("\n--- LISTA DE RESERVAS ---");
+                    reservaDao.listarReservas();
                     break;
 
                 // =========================
-                // SOLICITUDES POR CLIENTE
+                // ELIMINAR USUARIO
                 // =========================
                 case 5:
 
-                    System.out.println("\n--- SOLICITUDES POR CLIENTE ---");
+                    System.out.println("\n--- ELIMINAR USUARIO ---");
 
-                    System.out.print("Ingrese ID del cliente: ");
-                    int idBuscar = sc.nextInt();
-
-                    solicitudDao.listarSolicitudesPorCliente(idBuscar);
-                    break;
-
-                // =========================
-                // ELIMINAR CLIENTE
-                // =========================
-                case 6:
-
-                    System.out.println("\n--- ELIMINAR CLIENTE ---");
-
-                    System.out.print("Ingrese ID del cliente: ");
+                    System.out.print("Ingrese ID Usuario: ");
                     int idEliminar = sc.nextInt();
 
-                    clienteDao.eliminarCliente(idEliminar);
+                    usuarioDao.eliminarUsuario(idEliminar);
                     break;
 
                 // =========================
                 // SALIR
                 // =========================
-                case 7:
+                case 6:
+
                     System.out.println("Saliendo del sistema...");
                     break;
 
@@ -170,7 +158,7 @@ public class Main {
                     System.out.println("Opción inválida.");
             }
 
-        } while (opcion != 7);
+        } while (opcion != 6);
 
         sc.close();
     }

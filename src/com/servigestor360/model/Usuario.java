@@ -1,25 +1,30 @@
 package com.servigestor360.model;
 
-public class Cliente {
+public class Usuario {
 
-    private int idCliente;
+    private int idUsuario;
     private String nombres;
     private String apellidos;
     private String tipoDocumento;
     private String numeroDocumento;
     private String telefono;
     private String correoElectronico;
-    private String direccion;
+    private String rol;
     private boolean activo;
 
-    // Constructor vacío
-    public Cliente() {
+    // =========================
+    // CONSTRUCTOR VACÍO
+    // =========================
+    public Usuario() {
     }
 
-    // Constructor SIN id (para insertar)
-    public Cliente(String nombres, String apellidos, String tipoDocumento,
-                   String numeroDocumento, String telefono,
-                   String correoElectronico, String direccion, boolean activo) {
+    // =========================
+    // CONSTRUCTOR SIN ID
+    // =========================
+    public Usuario(String nombres, String apellidos,
+                   String tipoDocumento, String numeroDocumento,
+                   String telefono, String correoElectronico,
+                   String rol, boolean activo) {
 
         this.nombres = nombres;
         this.apellidos = apellidos;
@@ -27,30 +32,35 @@ public class Cliente {
         this.numeroDocumento = numeroDocumento;
         this.telefono = telefono;
         this.correoElectronico = correoElectronico;
-        this.direccion = direccion;
+        this.rol = rol;
         this.activo = activo;
     }
 
-    // Constructor CON id (para actualizar)
-    public Cliente(int idCliente, String nombres, String apellidos, String tipoDocumento,
-                   String numeroDocumento, String telefono,
-                   String correoElectronico, String direccion, boolean activo) {
+    // =========================
+    // CONSTRUCTOR CON ID
+    // =========================
+    public Usuario(int idUsuario, String nombres, String apellidos,
+                   String tipoDocumento, String numeroDocumento,
+                   String telefono, String correoElectronico,
+                   String rol, boolean activo) {
 
-        this.idCliente = idCliente;
+        this.idUsuario = idUsuario;
         this.nombres = nombres;
         this.apellidos = apellidos;
         this.tipoDocumento = tipoDocumento;
         this.numeroDocumento = numeroDocumento;
         this.telefono = telefono;
         this.correoElectronico = correoElectronico;
-        this.direccion = direccion;
+        this.rol = rol;
         this.activo = activo;
     }
 
-    // ===== GETTERS =====
+    // =========================
+    // GETTERS
+    // =========================
 
-    public int getIdCliente() {
-        return idCliente;
+    public int getIdUsuario() {
+        return idUsuario;
     }
 
     public String getNombres() {
@@ -77,18 +87,20 @@ public class Cliente {
         return correoElectronico;
     }
 
-    public String getDireccion() {
-        return direccion;
+    public String getRol() {
+        return rol;
     }
 
     public boolean isActivo() {
         return activo;
     }
 
-    // ===== SETTERS =====
+    // =========================
+    // SETTERS
+    // =========================
 
-    public void setIdCliente(int idCliente) {
-        this.idCliente = idCliente;
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
     public void setNombres(String nombres) {
@@ -115,8 +127,8 @@ public class Cliente {
         this.correoElectronico = correoElectronico;
     }
 
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
+    public void setRol(String rol) {
+        this.rol = rol;
     }
 
     public void setActivo(boolean activo) {
